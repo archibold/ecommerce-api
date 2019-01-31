@@ -6,7 +6,7 @@ exports.login = function(req, res) {
   firebase.auth()
   .signInWithEmailAndPassword(user.email, user.password)
   .then(response => {
-    res.send(response.data)
+    res.send()
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;

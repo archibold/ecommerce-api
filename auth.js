@@ -9,8 +9,7 @@ exports.login = function(req, res) {
     .then(function(response) {
       res.send();
     });
-  } catch (err) {
-    console.log(error);
+  } catch (error) {
     var errorMessage = error.message;
     res.status(401).send(errorMessage);
   }

@@ -9,10 +9,10 @@ exports.generateToken = function (req, res) {
   ccdata.public_api_key = publicApiKey;
 
   axios.post('https://direct.paylane.com/rest.js/cards/generateToken', ccdata)
-    .then(response => {
+    .then(function(response) {
       res.send(response.data)
     })
-    .catch(error => {
+    .catch(function(error) {
       res.send(error)
     })
 
@@ -21,10 +21,10 @@ exports.generateToken = function (req, res) {
 exports.saleByToken = function (req, res) {
   const ccdata = req.body;
 axios.post(encodeURI(`https://${paylane_login}:${paylane_pass}@direct.paylane.com/rest/cards/saleByToken`), ccdata)
-  .then(response => {
+  .then(function(response) {
     res.send(response.data)
   })
-  .catch(error => {
+  .catch(function(error) {
     res.send(error)
   })
 }

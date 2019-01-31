@@ -4,7 +4,7 @@ exports.getProducts = function(req, res) {
   firebase.database().ref('/products/').once('value')
   .then(function(snapshot) {
     res.send(snapshot.val());
-  }).catch(error => {
+  }).catch(function(error) {
     res.status(404).send('bad request');
   });
 }
@@ -24,7 +24,7 @@ exports.putProduct = function(req, res) {
     image: data.image
   }).then(function() {
     res.send();
-  }).catch(error => {
+  }).catch(function(error) {
     res.status(404).send('bad request');
   })
 }

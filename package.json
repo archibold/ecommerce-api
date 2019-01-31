@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "ecommerce API",
+  "version": "0.2.0",
+  "description": "A sample ecommerce API",
   "engines": {
     "node": "10.x"
   },
@@ -14,14 +14,15 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "firebase": "^5.8.1"
   },
   "devDependencies": {
     "tape": "^4.7.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/archibold/ecommerce-api"
   },
   "keywords": [
     "node",

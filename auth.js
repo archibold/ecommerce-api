@@ -25,7 +25,7 @@ exports.logout = function(req, res) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    console.log(error);
+
     res.status(401).send(errorMessage);
   }
 }

@@ -1,14 +1,26 @@
-var firebase = require('../firebase');
+const firebase = require('../firebase');
 
 exports.getProducts = function(req, res) {
   firebase.database().ref('/products/').once('value')
   .then(function(snapshot) {
-    const products = Object.values(snapshot.val()).filter(function(product) {
-      return !product.isSold;
-    }).slice(0,4);
+    let products = [];
+
+    snapshot.forEach(function(childSnapshot) {
+      if(!childSnapshot.val().isSold) {
+        const product = {
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        }
+
+        products.push(product);
+      }
+    })
+    products = products.slice(0,4);
+
     res.send(products);
   }).catch(function(error) {
-    res.status(404).send('bad request');
+
+    res.status(404).send(error);
   });
 }
 

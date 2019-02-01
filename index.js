@@ -18,5 +18,6 @@ express()
   // router.post('/createAccount', auth.createAccount);
   .post('/login', auth.login)
   .get('/logout', auth.logout)
+  .get('/isAuth', auth.isAuth)
   .get('/', (req, res) => res.send('API'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

@@ -58,3 +58,14 @@ exports.isAuthenticated = function (req, res, next) {
     res.status(401).send('unauthorized');
   }
 }
+
+exports.isAuth = function (req, res) {
+  const user = firebase.auth().currentUser;
+
+  if (user !== null) {
+    req.user = user;
+    res.send();
+  } else {
+    res.status(401).send('unauthorized');
+  }
+}

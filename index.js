@@ -16,8 +16,8 @@ express()
   .use('/api', api)
   // Auth
   // router.post('/createAccount', auth.createAccount);
-  .post('/login', auth.login)
-  .get('/logout', auth.logout)
-  .get('/isAuth', auth.isAuth)
+  .post('/admin/login', auth.login)
+  .get('/admin/logout', auth.logout)
+  .get('/admin/isAuth', auth.isAuth)
   .get('/', (req, res) => res.send('API'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

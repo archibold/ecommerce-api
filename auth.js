@@ -6,7 +6,7 @@ exports.login = function(req, res) {
   try {
     firebase.auth()
     .signInWithEmailAndPassword(user.email, user.password)
-    .then(function(response) {
+    .then(function() {
       res.send();
     });
   } catch (error) {
@@ -16,33 +16,36 @@ exports.login = function(req, res) {
 }
 
 exports.logout = function(req, res) {
-  firebase.auth().signOut()
-  .then(function(response) {
-    res.send();
-  }).catch(function(error) {
+  try {
+    firebase.auth().signOut()
+    .then(function() {
+      res.send()
+    })
+  } catch(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(error);
     res.status(401).send(errorMessage);
-  });
+  }
 }
 
 exports.createAccount = function(req, res) {
   const user = req.body;
 
-  firebase.auth()
-  .createUserWithEmailAndPassword(user.email, user.password)
-  .then(function(response) {
-    res.send(response.data)
-  })
-  .catch(function(error) {
+  try {
+    firebase.auth()
+    .createUserWithEmailAndPassword(user.email, user.password)
+    .then(function() {
+      res.send()
+    })
+  } catch (error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
 
     res.status(401).send(errorMessage);
-  });
+  }
 }
 
 exports.isAuthenticated = function (req, res, next) {

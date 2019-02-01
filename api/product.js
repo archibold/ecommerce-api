@@ -3,7 +3,10 @@ var firebase = require('../firebase');
 exports.getProducts = function(req, res) {
   firebase.database().ref('/products/').once('value')
   .then(function(snapshot) {
-    res.send(snapshot.val());
+    const products = Object.values(snapshot.val()).filter(function(product) {
+      return !product.isSold;
+    }).slice(0,4);
+    res.send(products);
   }).catch(function(error) {
     res.status(404).send('bad request');
   });

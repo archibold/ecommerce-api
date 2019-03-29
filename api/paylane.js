@@ -1,5 +1,6 @@
 const axios = require('axios');
 const firebase = require('../firebase');
+require('dotenv').config();
 
 const publicApiKey = process.env.PUBLIC_API_KEY
 const paylane_login = process.env.PL_LOGIN

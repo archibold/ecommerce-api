@@ -4,10 +4,16 @@ exports.login = function(req, res) {
   const user = req.body;
 
   try {
+
     firebase.auth()
     .signInWithEmailAndPassword(user.email, user.password)
     .then(function() {
+      console.log('hhh');
       res.send();
+    })
+    .catch(error => {
+      var errorMessage = error.message;
+      res.status(401).send(errorMessage);
     });
   } catch (error) {
     var errorMessage = error.message;
@@ -21,6 +27,10 @@ exports.logout = function(req, res) {
     .then(function() {
       res.send()
     })
+    .catch(error => {
+      var errorMessage = error.message;
+      res.status(401).send(errorMessage);
+    });
   } catch(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -39,6 +49,10 @@ exports.createAccount = function(req, res) {
     .then(function() {
       res.send()
     })
+    .catch(error => {
+      var errorMessage = error.message;
+      res.status(401).send(errorMessage);
+    });
   } catch (error) {
     // Handle Errors here.
     var errorCode = error.code;

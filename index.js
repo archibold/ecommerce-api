@@ -15,7 +15,7 @@ express()
   .use(cors({ origin: true }))
   .use('/api', api)
   // Auth
-  // router.post('/createAccount', auth.createAccount);
+  .post('/admin/register', auth.createAccount);
   .post('/admin/login', auth.login)
   .get('/admin/logout', auth.logout)
   .get('/admin/isAuth', auth.isAuth)

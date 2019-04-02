@@ -10,6 +10,7 @@ router.post('/saleByToken', paylane.saleByToken);
 
 // Products
 router.get('/products', product.getProducts);
+router.get('/user-products', auth.isAuthenticated, product.getUserProducts);
 router.put('/product', auth.isAuthenticated, product.putProduct);
 
 module.exports = router

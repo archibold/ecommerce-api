@@ -8,7 +8,6 @@ exports.login = function(req, res) {
     firebase.auth()
     .signInWithEmailAndPassword(user.email, user.password)
     .then(function() {
-      console.log('hhh');
       res.send();
     })
     .catch(error => {

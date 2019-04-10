@@ -57,7 +57,7 @@ exports.putProduct = function(req, res) {
   if (!data.image) res.status(404).send('no image');
   
     firebase.database().ref('images').push()
-    .set(image)
+    .set(data.image)
     .then(function(img) {
       console.log(img);
       res.send(img);

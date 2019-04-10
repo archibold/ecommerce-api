@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const paylane = require('./paylane');
 const product = require('./product');
+const images = require('./images');
 const auth = require('../auth');
 
 // Paylane
@@ -13,4 +14,7 @@ router.get('/products', product.getProducts);
 router.get('/user-products', auth.isAuthenticated, product.getUserProducts);
 router.put('/product', auth.isAuthenticated, product.putProduct);
 
-module.exports = router
+// Images
+router.get('/images/:uid', images.getImage);
+
+module.exports = router;

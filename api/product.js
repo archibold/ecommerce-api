@@ -56,25 +56,23 @@ exports.putProduct = function(req, res) {
   if (!data.price) res.status(404).send('no price');
   if (!data.image) res.status(404).send('no image');
   
-    firebase.database().ref('images').push()
-    .set(data.image)
-    .then(function(img) {
-      console.log(img);
-      res.send(img);
-
+    const image = firebase.database().ref('images').push();
+    image.set(data.image)
+    .then(function() {
+      firebase.database().ref('products/' + uid).push().set({
+        id: Math.random().toString(36).substr(2, 9),
+        description: data.description,
+        title: data.title,
+        price: data.price,
+        image: image.key,
+      }).then(function() {
+        res.send();
+      }).catch(function(error) {
+        res.status(404).send('bad request');
+      });
     }).catch(function(error) {
       res.status(404).send('bad request');
     });
 
-  // firebase.database().ref('products/' + uid).push().set({
-  //   id: Math.random().toString(36).substr(2, 9),
-  //   description: data.description,
-  //   title: data.title,
-  //   price: data.price,
-  //   image: data.image
-  // }).then(function() {
-  //   res.send();
-  // }).catch(function(error) {
-  //   res.status(404).send('bad request');
-  // })
+
 }
